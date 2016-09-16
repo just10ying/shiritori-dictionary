@@ -1,29 +1,27 @@
+const querystring = require('querystring');
 const unirest = require('unirest');
-const min_letters = 3;
-const max_letters = 10;
 
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+const DICTIONARY_API_URL = 'https://wordsapiv1.p.mashape.com/words/?';
+const MASHAPE_API_KEY = 'Hf6g30e7hsmsh7Z90Ty8JGj4QqxRp1Lvbcpjsn99NlC069SThT';
 
-function getLetterPattern(char) {
-  return '^' + char + '.{' + 4 + '}$';
+function getQueryString(letter) {
+  var requestObject = {
+    letterPattern: '^' + letter,
+    random: true
+  };
+  return querystring.stringify(requestObject);
 }
 
 module.exports = {
-  getWordBeginningWith: function(char, not, callback) {
-    unirest.get('https://wordsapiv1.p.mashape.com/words/?limit=10&letterPattern=' + getLetterPattern(char))
-    .header("X-Mashape-Key", "Hf6g30e7hsmsh7Z90Ty8JGj4QqxRp1Lvbcpjsn99NlC069SThT")
+  getWordBeginningWith: function(letter, usedWordsArray, callback) {
+    unirest.get(DICTIONARY_API_URL + getQueryString(letter))
+    .header("X-Mashape-Key", MASHAPE_API_KEY)
     .header("Accept", "application/json")
     .end(function(result) {
-      var availableWords = result.body.results.data;
-      console.log(availableWords);
-      for (var index = 0; index < availableWords.length; index++) {
-        var word = availableWords[index];
-        if (not.indexOf(word) < 0) {
-          callback(word);
-          return;
-        }
+      var word = result.body.word;
+      if (usedWordsArray.indexOf(word) < 0) {
+        callback(word);
+        return;
       }
       callback(null);
     });
