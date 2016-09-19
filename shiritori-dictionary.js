@@ -6,7 +6,7 @@ const MASHAPE_API_KEY = 'Hf6g30e7hsmsh7Z90Ty8JGj4QqxRp1Lvbcpjsn99NlC069SThT';
 
 function getQueryString(letter) {
   var requestObject = {
-    letterPattern: '^' + letter,
+    letterPattern: '^' + letter + '[a-z]+',
     random: true
   };
   return '?' + querystring.stringify(requestObject);
