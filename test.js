@@ -1,7 +1,7 @@
 const Dictionary = require('./shiritori-dictionary.js');
 const assert = require('assert');
 
-Dictionary.getWordBeginningWith('a', [], function(result) {
+Dictionary.getWordBeginningWith('a', function(result) {
   console.log(result);
 });
 
