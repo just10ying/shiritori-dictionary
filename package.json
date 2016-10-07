@@ -1,6 +1,6 @@
 {
   "name": "shiritori-dictionary",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shiritori dictionary",
   "main": "shiritori-dictionary.js",
   "dependencies": {
