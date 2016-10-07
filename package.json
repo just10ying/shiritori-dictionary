@@ -10,6 +10,6 @@
   "scripts": {
     "test": "node test.js"
   },
-  "author": "",
+  "author": "just10ying@gmail.com",
   "license": "BSD-2-Clause"
 }
