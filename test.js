@@ -1,7 +1,7 @@
 const dictionary = require('./shiritori-dictionary.js');
 const assert = require('assert'); 
 
-dictionary.setAPIKey('insert your key here');
+dictionary.setAPIKey('WAQifop2d1mshdv64vkiIrk42mBUp10GQPIjsnTQdTzKuWD3Ll');
 
 dictionary.validateWord('John', function(valid) {
   assert(valid);

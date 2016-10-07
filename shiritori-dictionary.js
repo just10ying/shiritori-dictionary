@@ -74,7 +74,11 @@ module.exports = {
       if (typeof result.body.definitions == 'undefined') {
         callback(null);
       } else {
-        callback(result.body.definitions[0].definition);
+        if (result.body.definitions.length == 0) {
+          callback(null);
+        } else {
+          callback(result.body.definitions[0].definition);
+        }
       }
     });
   },
