@@ -20,3 +20,13 @@ dictionary.defineWord('notawordlol', function(definition) {
 dictionary.defineWord('car', function(definition) {
   assert(definition == 'a motor vehicle with four wheels; usually propelled by an internal combustion engine');
 });
+
+// Any random word should also have a definition.
+for (var i = 0; i < 10; i++) {
+  dictionary.getWordBeginningWith('n', function(word) {
+    dictionary.defineWord(word, function(definition) {
+      assert(definition != null);
+    });
+  });
+}
+

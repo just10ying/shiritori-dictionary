@@ -12,6 +12,7 @@ var mashapeAPIKey = null;
 function getQueryString(letter) {
   var requestObject = {
     letterPattern: '^' + letter + '[a-z]+$',
+    hasDetails: 'definitions',
     random: true
   };
   return '?' + querystring.stringify(requestObject);
